@@ -1,0 +1,282 @@
+/* Height constraints needed for outermost container for inner containers. */
+html, body {
+	height: 100%;
+}
+
+.container-fluid {
+	height: 100%;
+}
+
+#header {
+	background-color: #ca278c;
+	border: 1px solid black;
+	padding-left: 50px;
+	font-family: "Comic Sans", Times, serif;
+}
+
+#title {
+	font-size: 50px;
+	font-weight: bold;
+	display: inline-block;
+	color: #F1BD40;
+}
+
+#subtitle {
+	font-style: italic;
+	display: inline-block;
+}
+
+#view1 #actionBox {
+	background-color: #F1BD40;
+	filter: alpha(opacity=20); /* For IE8 and earlier */
+	width: 900px;
+	height: 300px;
+	position: fixed;
+	left: 0%;
+	bottom: 20%;
+}
+
+#view1 #boxContainerParent {
+	padding-left: 50px;
+	width: 100%;
+}
+
+#view1 #boxTitle {
+	font-size: 300%
+}
+
+#view1 #boxLine {
+	border-bottom: 5px solid black;
+}
+
+#view1 #boxText {
+	font-size: 200%;
+	font-family: "Comic Sans", Times;
+}
+
+#view1 #lowerBoxContent {
+	margin-top: 5%;
+}
+
+#view1 #buttonPreText {
+	font-size: 200%;
+	font-family: "Comic Sans", Times;
+	font-style: italic;
+}
+
+#view1 #startButton {
+	width: 50%;
+	height: 50px;
+	border: 2px solid black;
+	font-size: 20px;
+	font-weight: bold;
+	color: #F1BD40;
+	background: #ca278c;
+}
+
+#view2, #view3, #view4 {
+	height: 100%;
+}
+
+#view3 #search-form {
+	margin-left: 20px;
+}
+
+#view4 span p, span h1 {
+	padding-left: 30px;
+}
+
+#view4 #ingredient-list {
+	margin-top: 20px;
+}
+
+#view4 #confirmButtonDiv {
+	margin-left: 10px;
+	margin-bottom: 10px;
+}
+
+#left-pane {
+	height: 100%;
+	border-right: 1px solid black;
+
+}
+
+#left-pane input {
+	width: 40px;
+	margin-bottom: 10px;
+}
+
+#left-pane p {
+	font-weight: bold;
+	text-align: right;
+}
+
+thead {
+	font-weight: bold;
+	background-color: #ededed;
+}
+
+#right-pane, #right-pane-select {
+	height: 80%;
+}
+
+#search-pane {
+	background-color: #ffe499;
+	border-bottom: 1px solid black;
+}
+
+#search-pane select {
+	width: 200px;
+}
+
+#browsing-pane {
+	overflow: auto;
+	height: 100%;
+	padding: 10px;
+}
+
+#ingredient-list {
+	background-color: #ffe499;
+	border: solid;
+}
+
+/* Nice formatting from https://css-tricks.com/examples/hrs/ */
+hr {
+	border: 0px;
+	height: 1px;
+	background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
+}
+
+.image-box, .image-box-no-text {
+	border: solid;
+	background-color: #ededed;
+	width: auto;
+}
+
+.image-box img {
+	width: 100%;
+	border-bottom: solid;
+}
+
+.image-box-no-text img {
+	width: 100%;
+}
+
+.image-box h3 {
+	text-align: center;
+	border: 3px solid #ededed;
+	word-wrap: break-word;
+}
+
+.prep {
+	padding-top: 30px;
+}
+
+.prep h1, h4 {
+	font-family: "Comic Sans", Times, serif;
+	font-weight: bold;
+}
+
+.prep h4 {
+	padding-top: 20px;
+}
+
+#view5 #subHeaderSubTitle {
+	display: inline-block;
+}
+
+#view5 #subHeader {
+	border: 2px solid black;
+	height: 8%;
+	background-color: #FFDEAD;
+	font-family: "Comic Sans", Times;
+}
+
+#view6 #itemRow {
+	padding-top: 5%;
+}
+
+.btn {
+	background-color: rgba(255, 102, 0, 1);
+	color: black;
+	border-color: black;
+}
+
+.verticalLine {
+	border-left: medium black solid;
+	padding-top: 120%;
+	padding-left: 20px;
+	font-family: "Comic Sans", Times;
+	font-size: 200%;
+	font-weight: bold;
+}
+
+#view6 #proceedRow {
+	padding-top: 100px;
+}
+
+#view6 #printButton {
+	width: 50%;
+	height: 50px;
+	border: 2px solid black;
+	font-size: 20px;
+	font-weight: bold;
+	color: black;
+	background: rgba(255, 102, 0, 1);
+}
+
+#view6 h6 {
+	text-align: right;
+	font-family: "Comic Sans", Times;
+	font-size: 150%;
+	font-weight: bold;
+	color: #8B0000;
+}
+
+#view6 #preCourseFood, #mainCourseFood, #dessertFood {
+	font-family: "Comic Sans", Times;
+	font-weight: bold;
+}
+
+#view6 img {
+	width: 100%;
+}
+
+#view7 h4 {
+	text-transform: uppercase;
+}
+
+#view7 .itemRow #item-1 {
+	min-width: 190px;
+	min-height: 300px;
+}
+
+#view7 .itemRow #item-1-text {
+	min-width: 400px;
+	min-height: 300px;
+}
+
+#view7 .itemRow #item-1-prep-text {
+	min-width: 300px;
+	position: relative;
+}
+
+#search-pane h2 {
+	margin-left: 10px;
+}
+
+.btn-circle {
+	width: 15px;
+	height: 15px;
+	text-align: center;
+	padding: 0px 0;
+	font-size: 10px;
+	line-height: 1.428571429;
+	border-radius: 10px;
+	position: absolute;
+	right: 20px;
+}
+
+.trdiv {
+	padding-top: 20px;
+}
