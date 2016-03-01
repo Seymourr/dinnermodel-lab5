@@ -10,7 +10,7 @@ not support it in free version) and list all the dishes that match the search. -
             <hr>
             <div class="row">
                 <div id="search-form" class="form-group col-sm-6 col-lg-6">
-                    <input ng-model="query"/>
+                    <input ng-model="query" ng-change="inputSearch(query)"/>
                     <button ng-click="search(query)" id="search-button" class="btn btn-primary" placeholder="Type any keywords">Search</button>
                 </div>
             </div>

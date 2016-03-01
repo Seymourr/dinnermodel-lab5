@@ -19,7 +19,12 @@ this with Total price of the menu -->
                 <td>Cost</td>
             </tr>
             </thead>
-            <tbody id="table-body">
+            <tbody ng-repeat="dish in menuDishes">
+                <tr>
+                    <td>{{numberOfGuests}}</td>
+                    <td>{{dish.Title}}</td>
+                    <td>{{getPrice(dish)}}
+                </tr>
             </tbody>
         </table>
         <hr>

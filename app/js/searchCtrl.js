@@ -16,4 +16,13 @@ dinnerPlannerApp.controller('SearchCtrl', function ($scope,Dinner) {
    });
   }
 
+  var timer = 0;
+  $scope.inputSearch = function(query) {
+    if(timer != 0) {
+      clearTimeout(timer);
+    }
+
+    timer = setTimeout($scope.search(query), 500);
+  }
+
 });
