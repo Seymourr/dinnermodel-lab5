@@ -97,6 +97,7 @@ html, body {
 
 #left-pane {
 	height: 100%;
+	width: 100%;
 	border-right: 1px solid black;
 
 }
@@ -279,4 +280,12 @@ hr {
 
 .trdiv {
 	padding-top: 20px;
+}
+
+ng-include {
+	height: 100%;
+}
+
+.ng-scope {
+	height: 100%;
 }

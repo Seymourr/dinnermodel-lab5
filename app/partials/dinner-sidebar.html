@@ -5,30 +5,27 @@
 <!-- Displaying number of guests both in input box and here is redundant. It is here only for the example
 purpose so you can see how some information from the model can be retrieved. In Lab 5 you will replace 
 this with Total price of the menu -->
-
-<div id="view2" >
-    <div id="left-pane" class="col-xs-4 col-sm-4 col-lg-2">
-        <h3>My Dinner</h3>
-        <label for="guest-number">People</label>
-        <input id="guestNumber" type="number" ng-model="numberOfGuests" ng-change="setNumberOfGuest(numberOfGuests)"/>
-        <table class="table table-hover">
-            <thead>
-            <tr>
-                <td>Portions</td>
-                <td>Dish Name</td>
-                <td>Cost</td>
-            </tr>
-            </thead>
-            <tbody ng-repeat="dish in menuDishes">
-                <tr>
-                    <td>{{numberOfGuests}}</td>
-                    <td>{{dish.Title}}</td>
-                    <td>{{getPrice(dish)}}
-                </tr>
-            </tbody>
-        </table>
-        <hr>
-        <p id="total-cost">SEK 0</p>
-        <button id="confirm-button-sidebar" class="btn btn-primary">Confirm Dinner</button>
-    </div>
+<div id="left-pane">
+	<h3>My Dinner</h3>
+	<label for="guest-number">People</label>
+	<input id="guestNumber" type="number" ng-model="numberOfGuests" ng-change="setNumberOfGuest(numberOfGuests)"/>
+	<table class="table table-hover">
+		<thead>
+		<tr>
+			<td>Portions</td>
+			<td>Dish Name</td>
+			<td>Cost</td>
+		</tr>
+		</thead>
+		<tbody ng-repeat="dish in menuDishes">
+		<tr>
+			<td>{{numberOfGuests}}</td>
+			<td>{{dish.Title}}</td>
+			<td>{{getPrice(dish)}}
+		</tr>
+		</tbody>
+	</table>
+	<hr>
+	<p id="total-cost">SEK {{getTotalMenuPrice}}</p>
+	<button id="confirm-button-sidebar" class="btn btn-primary" ng-href="#/overview">Confirm Dinner</button>
 </div>
