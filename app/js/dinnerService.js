@@ -11,7 +11,7 @@ dinnerPlannerApp.factory('Dinner',function ($resource) {
   // a bit to take the advantage of Angular resource service
   // check lab 5 instructions for details
 
-  var numberOfGuests = 0;
+  var numberOfGuests = 1;
   var selectedDishes = [];
 
   this.setNumberOfGuests = function (num) {
@@ -58,7 +58,7 @@ dinnerPlannerApp.factory('Dinner',function ($resource) {
   this.getIngredientPrice = function (ing) {
     return ing['Quantity']; //Quantity is ingredient price..
   };
-  
+
   //Return the cost of a specific dish 
   this.getDishPrice = function (dish) {
     var totalPrice = 0;

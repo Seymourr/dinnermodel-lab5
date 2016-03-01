@@ -8,17 +8,20 @@ dinnerPlannerApp.controller('DishCtrl', function ($scope,$routeParams,Dinner) {
   $scope.dish;
   $scope.ingredients;
   $scope.dishPrice;
-  $scope.search = function(id) {
-   $scope.status = "Searching...";
-   Dinner.Dish.get({id},function(data){
-      $scope.dish = data;
+
+
+   $scope.search = function(id) {
+   $scope.status = "searching";
+    Dinner.Dish.get({id},function(data){
+     $scope.dish = data;
       $scope.ingredients = $scope.dish.Ingredients;
       $scope.dishPrice = Dinner.getDishPrice($scope.dish);
-     $scope.status = "Showing " + data.length + " results";
+     $scope.status = "showing";
    },function(data){
-     $scope.status = "There was an error";
+     $scope.status = "failure";
    });
   }
+
   $scope.search($routeParams.dishId);
 
   $scope.getNumberOfGuests = function() {

@@ -3,7 +3,12 @@
 
 <!-- TODO in Lab 5: Display the dish information including image, Description, 
 Instructions, Ingredients and total cost. -->
-<div id="right-pane" class="col-xs-8 col-sm-8 col-lg-10">
+ <div ng-show="status == 'searching'"> <span us-spinner></span></div>
+
+        <div ng-show="status == 'failure'" class="alert alert-warning" role="alert">Request failed. Make sure your internet connection is working and make another search.</div>
+
+        
+<div id="right-pane" class="col-xs-8 col-sm-8 col-lg-10" ng-show="status == 'showing'">
 	<div class="row">
 		<div class="col-lg-6">
 			<h1>{{dish.Title}}</h1>

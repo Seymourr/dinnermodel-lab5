@@ -18,6 +18,7 @@ dinnerPlannerApp.controller('SearchCtrl', function ($scope,Dinner) {
      $scope.status = "failure";
    });
   }
+  $scope.search();
 
   var timer = 0;
   $scope.inputSearch = function(query) {
