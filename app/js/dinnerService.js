@@ -58,11 +58,12 @@ dinnerPlannerApp.factory('Dinner',function ($resource) {
   this.getIngredientPrice = function (ing) {
     return ing['Quantity']; //Quantity is ingredient price..
   };
+  
   //Return the cost of a specific dish 
   this.getDishPrice = function (dish) {
     var totalPrice = 0;
     for (i = 0; i < dish['Ingredients'].length; i++) {
-      totalPrice += getIngredientPrice(dish['Ingredients'][i]); //Quantity used as currency..
+      totalPrice += this.getIngredientPrice(dish['Ingredients'][i]); //Quantity used as currency..
     }
     return totalPrice;
   };

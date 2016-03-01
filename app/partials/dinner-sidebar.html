@@ -17,15 +17,19 @@ this with Total price of the menu -->
 			<td>Cost</td>
 		</tr>
 		</thead>
-		<tbody ng-repeat="dish in menuDishes">
-		<tr>
-			<td>{{numberOfGuests}}</td>
-			<td>{{dish.Title}}</td>
-			<td>{{getPrice(dish)}}
-		</tr>
+		<tbody >
+			<tr ng-repeat="dish in menuDishes" ng-click="go('/dish/' + dish.RecipeID)" >
+				<td>{{getDishPortions(dish)}}</td>
+				<td>{{dish.Title}}</td>
+				<td>{{getPrice(dish)}}</td>			
+				<td><div class='trdiv'>
+						<button type='button'  id= "trol" ng-click="removeDish(dish.RecipeID)" class='btn btn-danger btn-circle'><i class='glyphicon glyphicon-remove'></i></button>
+					</div>
+				</td>
+			</tr>
 		</tbody>
 	</table>
 	<hr>
-	<p id="total-cost">SEK {{getTotalMenuPrice}}</p>
+	<p id="total-cost">SEK {{getTotalMenuPrice()}}</p>
 	<button id="confirm-button-sidebar" class="btn btn-primary" ng-href="#/overview">Confirm Dinner</button>
 </div>

@@ -12,19 +12,19 @@ Instructions, Ingredients and total cost. -->
 			<a href="#/search" class="btn btn-default btn-arrow-left">Back to Select dish</a>
 		</div>
 		<div id="ingredient-list" class="col-lg-6">
-			<h3>Ingredients for {{numberOfGuests}} people</h3>
+			<h3>Ingredients for {{getNumberOfGuests()}} people</h3>
 			<hr>
-			<table class="table" ng-repeat="ing in ingredients">
-				<tr>
-					<td>{{ingQuantity(ing)}}</td>
-					<td>ing.Name</td>
-					<td>SEK {{ingPrice(ing)}}</td>
-				</tr>
+			<table class="table">
+					<tr ng-repeat="ing in ingredients">
+						<td>{{ingQuantity(ing)}}</td>
+						<td>{{ing.Name}}</td>
+						<td>SEK {{ingPrice(ing)}}</td>
+					</tr>
 			</table>
 			<hr>
 			<div id="confirmButtonDiv" class="row">
 				<a href="#/search" ng-click="addToMenu(dish)" class="col-lg-6 btn btn-primary">Confirm Dish</a>
-				<p class="col-lg-6">SEK {{totalIngredientPrice(dish)}}
+				<p class="col-lg-6">SEK {{totalIngredientPrice()}}
 			</div>
 		</div>
 	</div>
