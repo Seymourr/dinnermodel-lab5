@@ -7,12 +7,15 @@ dinnerPlannerApp.controller('SearchCtrl', function ($scope,Dinner) {
 
   $scope.dishes;
   $scope.search = function(query) {
-   $scope.status = "Searching...";
+   $scope.status = "searching";
    Dinner.DishSearch.get({title_kw:query},function(data){
      $scope.dishes=data.Results;
-     $scope.status = "Showing " + data.Results.length + " results";
+     $scope.status = "showing";
+     if(data.Results.length == 0) {
+      $scope.status = "nothing"
+     }
    },function(data){
-     $scope.status = "There was an error";
+     $scope.status = "failure";
    });
   }
 

@@ -3,7 +3,7 @@
 
 <!-- TODO in Lab 5: Display the input box for search (you can ignore the type dropdown since BigOven does
 not support it in free version) and list all the dishes that match the search. -->
-<div id="view3">
+<div id="view3" >
     <div id="right-pane-select" class="col-xs-8 col-sm-8 col-lg-10">
         <div id="search-pane" class="row">
             <h2>Select Dish</h2>
@@ -15,8 +15,13 @@ not support it in free version) and list all the dishes that match the search. -
                 </div>
             </div>
         </div>
+        <div ng-show="status == 'searching'"> <span us-spinner></span></div>
 
-        <div id="browsing-pane" class="row">
+        <div ng-show="status == 'failure'" class="alert alert-warning" role="alert">Request failed. Make sure your internet connection is working and make another search.</div>
+
+        <div ng-show="status == 'nothing'" class="alert alert-warning" role="alert">Could not find any results.</div>
+
+        <div id="browsing-pane" class="row" ng-show="status == 'showing'">
             <div class='course col-xs-6 col-sm-4 col-lg-2' ng-repeat="dish in dishes">
                 <div class='image-box'>
                     <img ng-src="{{dish.ImageURL}}"/>
