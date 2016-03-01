@@ -62,7 +62,7 @@ dinnerPlannerApp.factory('Dinner',function ($resource) {
   this.getDishPrice = function (dish) {
     var totalPrice = 0;
     for (i = 0; i < dish['Ingredients'].length; i++) {
-      totalPrice += dish['Ingredients'][i]['Quantity']; //Quantity used as currency..
+      totalPrice += getIngredientPrice(dish['Ingredients'][i]); //Quantity used as currency..
     }
     return totalPrice;
   };
