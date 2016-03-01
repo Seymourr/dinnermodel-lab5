@@ -182,11 +182,11 @@ hr {
 	padding-top: 20px;
 }
 
-#view5 #subHeaderSubTitle {
+#subHeaderSubTitle {
 	display: inline-block;
 }
 
-#view5 #subHeader {
+#subHeader {
 	border: 2px solid black;
 	height: 8%;
 	background-color: #FFDEAD;

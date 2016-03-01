@@ -1,0 +1,22 @@
+<ng-include src="'partials/subheader.html'" ng-controller="DinnerCtrl"></ng-include>
+
+<div class= 'row itemRow' ng-repeat="dish in menuDishes">
+    <div class='prep col-xs-6 col-sm-3 col-lg-2 col-lg-offset-2'>
+        <div class='image-box-no-text'>
+             <img ng-src="{{dish.ImageURL}}"/>
+        </div>
+    </div>
+
+    <div class='prep col-xs-6 col-sm-4 col-lg-3'>
+        <h1>{{dish.Title}}</h1>
+        <p>{{dish.Description}}</p>
+    </div>
+
+    <div class='prep col-xs-6 col-sm-5 col-lg-3'>
+        <h4>Preperation</h4>
+        <p>{{dish.Instructions}}</p>
+    </div>
+</div>
+
+
+
