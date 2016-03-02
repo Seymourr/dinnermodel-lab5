@@ -14,7 +14,6 @@ dinnerPlannerApp.factory('Dinner', function ($resource, $cookieStore) {
   var numberOfGuests = $cookieStore.get('numberOfGuests');
   var selectedDishes = [];
 
-  getMenuCookie();
 
 
   this.setNumberOfGuests = function (num) {
@@ -84,6 +83,16 @@ dinnerPlannerApp.factory('Dinner', function ($resource, $cookieStore) {
 
   };
 
+  this.setMenuCookie = function () {
+    var cookie = "";
+
+    for (var i = 0; i < selectedDishes.length; i++) {
+      cookie += selectedDishes[i]["RecipeID"] + ":" + selectedDishes[i]["portions"] + " ";
+    }
+
+    $cookieStore.put("menu", cookie);
+  };
+
   //Adds the passed dish to the menu. If the dish of that type already exists on the menu
   //it is removed from the menu and the new one added.
   this.addDishToMenu = function (dish) {
@@ -95,7 +104,25 @@ dinnerPlannerApp.factory('Dinner', function ($resource, $cookieStore) {
     }
 
     selectedDishes.push(dish);
-    setMenuCookie();
+    this.setMenuCookie();
+  };
+
+  this.getMenuCookie = function () {
+    var cookie = $cookieStore.get("menu");
+    if (cookie !== undefined) {
+      var ids = cookie.split(" ");
+
+      for (var i = 0; i < ids.length - 1; i++) {
+        console.log(ids);
+        var portions = ids[i].split(":")[1];
+        var id = ids[i].split(":")[0];
+
+        this.Dish.get({id: id}, function (data) {
+          data["portions"] = portions;
+          selectedDishes.push(data);
+        });
+      }
+    }
   };
 
   //Removes dish from menu
@@ -107,34 +134,13 @@ dinnerPlannerApp.factory('Dinner', function ($resource, $cookieStore) {
         break;
       }
     }
-    setMenuCookie();
+    this.setMenuCookie();
   };
   var given_api_key = '18f3cT02U9f6yRl3OKDpP8NA537kxYKu';
   this.DishSearch = $resource('http://api.bigoven.com/recipes',{pg:1,rpp:25,api_key:given_api_key});
   this.Dish = $resource('http://api.bigoven.com/recipe/:id', {api_key: given_api_key});
 
-  function getMenuCookie() {
-    var cookie = $cookieStore.get("menu");
-    if (cookie !== undefined) {
-      var ids = cookie.split(":");
-
-      for (var i = 0; i < ids.length - 1; i++) {
-        this.Dish.get($ids[i], function (data) {
-          this.addDishToMenu(data);
-        });
-      }
-    }
-  }
-
-  function setMenuCookie() {
-    var cookie = "";
-
-    for (var i = 0; i < selectedDishes.length; i++) {
-      cookie += selectedDishes[i]["RecipeID"] + ":";
-    }
-
-    $cookieStore.put("menu", cookie);
-  }
+  this.getMenuCookie();
 
 
   // Angular service needs to return an object that has all the
