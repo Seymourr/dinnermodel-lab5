@@ -3,7 +3,7 @@
 // dependency on any service you need. Angular will insure that the
 // service is created first time it is needed and then just reuse it
 // the next time.
-dinnerPlannerApp.factory('Dinner',function ($resource) {
+dinnerPlannerApp.factory('Dinner',function ($resource, $cookies) {
   
   // TODO in Lab 5: Add your model code from previous labs
   // feel free to remove above example code
@@ -11,11 +11,13 @@ dinnerPlannerApp.factory('Dinner',function ($resource) {
   // a bit to take the advantage of Angular resource service
   // check lab 5 instructions for details
 
-  var numberOfGuests = 1;
-  var selectedDishes = [];
+  var numberOfGuests = $cookies.get('numberOfGuests');
+  var selectedDishes = $cookies.getObject('menu');
+
 
   this.setNumberOfGuests = function (num) {
     numberOfGuests = num;
+    $cookies.put('numberOfGuests', numberOfGuests);
   };
 
   this.getNumberOfGuests = function () {
@@ -91,6 +93,7 @@ dinnerPlannerApp.factory('Dinner',function ($resource) {
     }
 
     selectedDishes.push(dish);
+    $cookies.putObject('menu', selectedDishes);
   };
 
   //Removes dish from menu
@@ -102,6 +105,7 @@ dinnerPlannerApp.factory('Dinner',function ($resource) {
         break;
       }
     }
+    $cookies.putObject('menu', selectedDishes);
   };
   var given_api_key = '18f3cT02U9f6yRl3OKDpP8NA537kxYKu';
   this.DishSearch = $resource('http://api.bigoven.com/recipes',{pg:1,rpp:25,api_key:given_api_key});
