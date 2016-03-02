@@ -3,7 +3,7 @@
 // dependency on any service you need. Angular will insure that the
 // service is created first time it is needed and then just reuse it
 // the next time.
-dinnerPlannerApp.factory('Dinner',function ($resource, $cookies) {
+dinnerPlannerApp.factory('Dinner', function ($resource, $cookieStore) {
   
   // TODO in Lab 5: Add your model code from previous labs
   // feel free to remove above example code
@@ -11,13 +11,15 @@ dinnerPlannerApp.factory('Dinner',function ($resource, $cookies) {
   // a bit to take the advantage of Angular resource service
   // check lab 5 instructions for details
 
-  var numberOfGuests = $cookies.get('numberOfGuests');
-  var selectedDishes = $cookies.getObject('menu');
+  var numberOfGuests = $cookieStore.get('numberOfGuests');
+  var selectedDishes = [];
+
+  getMenuCookie();
 
 
   this.setNumberOfGuests = function (num) {
     numberOfGuests = num;
-    $cookies.put('numberOfGuests', numberOfGuests);
+    $cookieStore.put('numberOfGuests', numberOfGuests);
   };
 
   this.getNumberOfGuests = function () {
@@ -93,7 +95,7 @@ dinnerPlannerApp.factory('Dinner',function ($resource, $cookies) {
     }
 
     selectedDishes.push(dish);
-    $cookies.putObject('menu', selectedDishes);
+    setMenuCookie();
   };
 
   //Removes dish from menu
@@ -105,11 +107,34 @@ dinnerPlannerApp.factory('Dinner',function ($resource, $cookies) {
         break;
       }
     }
-    $cookies.putObject('menu', selectedDishes);
+    setMenuCookie();
   };
   var given_api_key = '18f3cT02U9f6yRl3OKDpP8NA537kxYKu';
   this.DishSearch = $resource('http://api.bigoven.com/recipes',{pg:1,rpp:25,api_key:given_api_key});
-  this.Dish = $resource('http://api.bigoven.com/recipe/:id',{api_key:given_api_key}); 
+  this.Dish = $resource('http://api.bigoven.com/recipe/:id', {api_key: given_api_key});
+
+  function getMenuCookie() {
+    var cookie = $cookieStore.get("menu");
+    if (cookie !== undefined) {
+      var ids = cookie.split(":");
+
+      for (var i = 0; i < ids.length - 1; i++) {
+        this.Dish.get($ids[i], function (data) {
+          this.addDishToMenu(data);
+        });
+      }
+    }
+  }
+
+  function setMenuCookie() {
+    var cookie = "";
+
+    for (var i = 0; i < selectedDishes.length; i++) {
+      cookie += selectedDishes[i]["RecipeID"] + ":";
+    }
+
+    $cookieStore.put("menu", cookie);
+  }
 
 
   // Angular service needs to return an object that has all the
